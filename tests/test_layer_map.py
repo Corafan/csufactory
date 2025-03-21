@@ -1,4 +1,4 @@
-from csufactory.csupdk.layer_map import LayerMap
+from csufactory.generic_tech.layer_map import LayerMap
 
 def test_layer_map():
     assert LayerMap.get_layer("WG") == (200, 0)
