@@ -14,6 +14,8 @@ nm = 1e-3
 class LayerStackParameters:
     """values used by get_layer_stack and get_process."""
     """用于层栈和工艺"""
+    def __init__(self):
+        self.layers = {}
 
     #0.45%,Si衬底。后续核对(问号表示待定)：
     thickness_substrate: float = 625                   #基板厚度um

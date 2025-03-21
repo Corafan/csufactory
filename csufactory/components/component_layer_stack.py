@@ -3,7 +3,7 @@ import datetime
 from functools import partial
 from csufactory.csupdk.layer_map import CSULAYER as LAYER
 from gdsfactory.technology import LayerLevel, LayerStack, LogicalLayer
-from csufactory.generic_tech.layer_stack import LayerStackParameters as Para
+from csufactory.generic_tech import LayerStackParameters as Para
 from csufactory.components.awg import free_propagation_region
 from csufactory.components.awg import awg
 #from gdsfactory.components.awg import wg
@@ -195,7 +195,7 @@ Si_zp45_GDS= LayerStack(
 
 #打印层栈信息并保存：
 #定义保存路径和文件名
-output_file = fr"C:\Windows\System32\csufactory\csufactory\all_output_files\parameter\Si_zp45_LayerStack.txt"
+output_file = fr"c:\Users\26035\Desktop\csufactory\csufactory\all_output_files\parameter\Si_zp45_LayerStack.txt"
 #打开文件进行写入
 with open(output_file, "w") as file:
     # 遍历层信息并将输出写入文件
@@ -215,7 +215,7 @@ print(f"TXT文件已保存至: {output_file}")
 z = gf.technology.layer_stack.get_component_with_derived_layers(c, Si_zp45_GDS)
 component_name = "awg_1_1" 
 #无时间戳：
-output_gds_path = fr"C:\Windows\System32\csufactory\csufactory\all_output_files\gds\{component_name}.gds"
+output_gds_path = fr"c:\Users\26035\Desktop\csufactory\csufactory\all_output_files\gds\{component_name}.gds"
 #有时间戳：
 # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 # output_gds_path = fr"D:\ProgramData\anaconda3\Lib\site-packages\gdsfactory\all_output_files\gds\{component_name}_{timestamp}.gds"
