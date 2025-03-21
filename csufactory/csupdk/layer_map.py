@@ -6,9 +6,11 @@ class CSULAYER:
     Si_Sub = (88, 0)
     SiO_Bottom_Clad = (87,0)
 
-    WG: Layer= (200,0)             #波导waveguide，材料是Si
+    WG = (200,0)             #波导waveguide，材料是Si
     WGN = (201, 0)           #非线性波导Waveguide Nonlinear 
     
+    #第二种表达方式：WG: Layer= (200,0)    
+
     # #备选部分
     # Slab_Full_Etch = (1,1)     #全刻蚀部分
     # Slab_Deep_Etch = (1,2)     #深刻蚀部分

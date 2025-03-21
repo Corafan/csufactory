@@ -7,7 +7,7 @@ import numpy as np
 import gdsfactory as gf
 from gdsfactory.component import Component
 from gdsfactory.typings import ComponentFactory, CrossSectionSpec
-from csufactory.csupdk.layer_map import CSULAYER as LAYER
+# from csufactory.csupdk.layer_map import CSULAYER as LAYER  #没用到，layer由crosssection决定的
 
 
 #输入/输出端口和阵列波导之间的过渡区域，用于分束和合束
@@ -20,6 +20,7 @@ def free_propagation_region(
     inputs: int = 1,
     outputs: int = 9,
     cross_section: CrossSectionSpec = "strip",
+    # layer: tuple = LAYER.WG,    #LAYER是由上面的crosssection决定的
 ) -> Component:
     r"""Free propagation region.
 
@@ -128,6 +129,7 @@ def awg(
     fpr_spacing: float = 50.0,                            #输入/输出FPR的间距
     arm_spacing: float = 1.0,                             #阵列波导间距
     cross_section: CrossSectionSpec = "strip",
+    # layer: tuple = LAYER.WG,
 ) -> Component:
     """Returns a basic Arrayed Waveguide grating.
 
@@ -197,6 +199,8 @@ def awg(
     c.draw_ports()
     return c
 
+
+#运行函数生成awg器件：
 if __name__ == "__main__":
     # c = free_propagation_region(inputs=4, outputs=4)
     c=gf.Component()

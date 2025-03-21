@@ -1,18 +1,18 @@
 import os
-import pathlib
-import json
 import gdstk
-import subprocess
 from csufactory import klive
-from csufactory import component
+
 
 #输出gds文件到指定文件夹
 def export_gds(
             component,
             filename="output.gds", 
-            filepath="C:/Windows/System32/csufactory/csufactory/all_output_files/gds"
+            filepath=None,
         ):
     """导出并保存 GDS 文件，支持自定义路径"""
+    if filepath is None:
+        filepath = "C:/Windows/System32/csufactory/csufactory/all_output_files/gds"
+
     os.makedirs(filepath, exist_ok=True)           # 确保目录存在
     file_path = os.path.join(filepath, filename)   # 生成完整的文件路径
     lib = gdstk.Library()                          # 创建 GDS 库
@@ -25,7 +25,7 @@ def export_gds(
 #将gds文件同步到klayout
 def show(
         component, 
-        gdspath="filepath", 
+        gdspath=None, 
         **kwargs
     ):
     """ write component GDS and shows it in klayout
@@ -34,6 +34,8 @@ def show(
         component
         gdspath: where to save the gds
     """
+    if gdspath is None:
+        gdspath = "C:/Windows/System32/csufactory/csufactory/all_output_files/gds"
     os.makedirs(gdspath, exist_ok=True)            # 确保目录存在
     file_path = os.path.join(gdspath)              # 生成完整的文件路径
     component = str(component)
@@ -44,7 +46,7 @@ def show(
             "Component is None, make sure that your function returns the component"
         )
     #生成 GDS 文件，并获取其路径
-    gds_file = export_gds(component, filename="output.gds", filepath=gdspath)
+    gds_file = export_gds(component, filename="output.gds", filepath=file_path)
     klive.show(gds_file)
     
     return
